@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="relative min-h-[45vh] md:min-h-[50vh] bg-cover bg-center bg-no-repeat flex items-center justify-center"
+    style="background-image: url('{% static "images/shop-bg.jpg" %}');">
+    <div class="absolute inset-0 bg-black/65"></div>
+    <div class="relative z-10 text-center text-white mt-36 md:mt-44">
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight">All Products</h1>
+        <div class="mt-5 flex items-center justify-center gap-3 text-lg font-semibold">
+            <span class="text-emerald-600">Home</span>
+            <span class="text-white/80">/</span>
+            <span>Shop</span>
+        </div>
+    </div>
+</section>
+
+<section class="bg-white py-16 md:py-20">
+    <div class="max-w-[1420px] mx-auto px-5 md:px-8">
+        <div class="grid grid-cols-1 xl:grid-cols-[340px_1fr] gap-8 xl:gap-7">
+
+            <aside class="space-y-12">
+                <div class="bg-[#4b9550] p-6">
+                    <div class="bg-white rounded-full h-14 flex items-center pl-6 pr-1.5">
+                        <input type="text" placeholder="Search products..."
+                            class="w-full bg-transparent border-0 outline-none text-lg text-slate-700 placeholder:text-[#8a8f98] placeholder:text-base md:placeholder:text-lg placeholder:font-normal">
+                        <button class="h-12 w-12 rounded-full bg-[#0b0f19] text-white text-lg flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="flex items-center gap-3 text-2xl font-bold tracking-tight">
+                        <i class="fa-solid fa-mug-hot text-[#3f8f4f] text-xl"></i>
+                        PRODUCT CATEGORIES
+                    </h3>
+                    <div class="h-px bg-gray-300 mt-4 mb-6"></div>
+                    <ul class="space-y-3 text-lg font-semibold leading-tight">
+                        <li><a class="hover:text-[#3f8f4f]" href="#">› Arabica Green</a></li>
+                        <li><a class="hover:text-[#3f8f4f]" href="#">› Arabica Roasted</a></li>
+                        <li><a class="hover:text-[#3f8f4f]" href="#">› Black Coffee</a></li>
+                        <li><a class="hover:text-[#3f8f4f]" href="#">› Mixed Sorts</a></li>
+                        <li><a class="hover:text-[#3f8f4f]" href="#">› Products</a></li>
+                        <li class="ml-5"><a class="hover:text-[#3f8f4f]" href="#">› Bakery & Sweets</a></li>
+                        <li class="ml-5"><a class="hover:text-[#3f8f4f]" href="#">› Black & Green Tea</a></li>
+                        <li class="ml-5"><a class="hover:text-[#3f8f4f]" href="#">› Cakes</a></li>
+                        <li class="ml-5"><a class="hover:text-[#3f8f4f]" href="#">› Chocolate</a></li>
+                        <li class="ml-5"><a class="hover:text-[#3f8f4f]" href="#">› Coffee Drinks</a></li>
+                        <li class="ml-5"><a class="hover:text-[#3f8f4f]" href="#">› Fresh Croissants</a></li>
+                        <li class="ml-5"><a class="hover:text-[#3f8f4f]" href="#">› Sandwiches</a></li>
+                        <li class="ml-5"><a class="hover:text-[#3f8f4f]" href="#">› Sweet Cookies</a></li>
+                        <li class="ml-5"><a class="hover:text-[#3f8f4f]" href="#">› Robusta Roasted</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="flex items-center gap-3 text-2xl font-bold tracking-tight">
+                        <i class="fa-solid fa-mug-hot text-[#3f8f4f] text-xl"></i>
+                        FILTER BY PRICE
+                    </h3>
+                    <div class="h-px bg-gray-300 mt-4 mb-8"></div>
+                    <div class="relative h-10">
+                        <div class="absolute top-4 left-0 right-0 h-2 bg-[#0f172a] rounded-full"></div>
+                        <div class="absolute top-1.5 left-0 w-8 h-8 bg-white border-[8px] border-[#0f172a] rounded-full"></div>
+                        <div class="absolute top-1.5 right-0 w-8 h-8 bg-white border-[8px] border-[#0f172a] rounded-full"></div>
+                    </div>
+                    <p class="text-center text-xl font-bold mt-2">Price: $0 — $50</p>
+                    <button class="mt-5 mx-auto block bg-[#4b8f4d] hover:bg-[#3f7a41] text-white text-base font-bold px-10 py-3 rounded-full">
+                        Filter
+                    </button>
+                </div>
+
+                <div>
+                    <h3 class="flex items-center gap-3 text-2xl font-bold tracking-tight">
+                        <i class="fa-solid fa-mug-hot text-[#3f8f4f] text-xl"></i>
+                        PRODUCT TAGS
+                    </h3>
+                    <div class="h-px bg-gray-300 mt-4 mb-6"></div>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="#" class="bg-[#f2efe9] rounded-full px-5 py-2 text-sm font-semibold hover:bg-[#e8e2d7]">arabica</a>
+                        <a href="#" class="bg-[#f2efe9] rounded-full px-5 py-2 text-sm font-semibold hover:bg-[#e8e2d7]">chocolate</a>
+                        <a href="#" class="bg-[#f2efe9] rounded-full px-5 py-2 text-sm font-semibold hover:bg-[#e8e2d7]">coffee</a>
+                        <a href="#" class="bg-[#f2efe9] rounded-full px-5 py-2 text-sm font-semibold hover:bg-[#e8e2d7]">delivery</a>
+                        <a href="#" class="bg-[#f2efe9] rounded-full px-5 py-2 text-sm font-semibold hover:bg-[#e8e2d7]">espresso</a>
+                    </div>
+                </div>
+            </aside>
+
+            <div>
+                <div class="bg-[#f7f4ee] px-7 py-6 flex items-center justify-between mb-8">
+                    <p class="text-lg font-semibold">Showing {{ products|length }} results</p>
+                    <div class="flex items-center gap-5">
+                        <span class="text-lg font-medium">Default sorting</span>
+                        <i class="fa-solid fa-chevron-down text-xl"></i>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7">
+                    {% for product in products %}
+                    <article class="text-center group">
+                        <div class="bg-[#faf7f2] p-10 relative overflow-hidden">
+                            {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-auto object-contain transition-opacity duration-300 group-hover:opacity-30">
+                            {% else %}
+                            <img src="{% static 'images/products-bag1.jpg' %}" alt="{{ product.name }}" class="w-full h-auto object-contain transition-opacity duration-300 group-hover:opacity-30">
+                            {% endif %}
+
+                            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <form method="post" action="{% url 'add_to_cart' product.id %}">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="slide-fill-btn text-base px-8 py-3 rounded-full">Add to cart</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 text-[#e3ac24] text-xl tracking-[3px]">★★★★★</div>
+                        <h4 class="mt-2 text-2xl font-extrabold leading-tight">{{ product.name }}</h4>
+                        <p class="mt-2 text-[#2f8c3f] text-3xl font-extrabold">${{ product.price }}</p>
+                    </article>
+                    {% empty %}
+                    <p class="text-lg text-gray-600 col-span-full">No products available.</p>
+                    {% endfor %}
+                </div>
+
+                <div class="flex items-center justify-center gap-4 mt-16">
+                    <a href="#" class="h-14 w-14 rounded-full bg-[#4b8f4d] text-white text-xl font-bold flex items-center justify-center">1</a>
+                    <a href="#" class="h-14 w-14 rounded-full bg-[#f4f1ea] text-black text-xl font-bold flex items-center justify-center">2</a>
+                    <a href="#" class="h-14 w-14 rounded-full bg-[#f4f1ea] text-black text-xl font-bold flex items-center justify-center">3</a>
+                    <a href="#" class="h-14 w-14 rounded-full bg-[#f4f1ea] text-black text-xl font-bold flex items-center justify-center">4</a>
+                    <a href="#" class="h-14 w-14 rounded-full bg-[#f4f1ea] text-black text-xl font-bold flex items-center justify-center">
+                        <i class="fa-solid fa-chevron-right text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

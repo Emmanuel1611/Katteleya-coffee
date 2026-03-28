@@ -1,0 +1,327 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="relative min-h-[45vh] md:min-h-[52vh] bg-cover bg-center bg-no-repeat flex items-center justify-center"
+    style="background-image: url('{% static "images/coffee-dark-bg.jpg" %}');">
+    <div class="absolute inset-0 bg-black/70"></div>
+    <div class="relative z-10 text-center text-white mt-24 md:mt-28">
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight">Our Blog</h1>
+        <div class="mt-5 flex items-center justify-center gap-3 text-lg font-semibold">
+            <a href="{% url 'home' %}" class="text-emerald-500 hover:text-emerald-400">Home</a>
+            <span class="text-white/80">/</span>
+            <span>Blog</span>
+        </div>
+    </div>
+</section>
+
+<section class="bg-[#f8f4eb] py-16 md:py-20">
+    <div class="max-w-[1420px] mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_2fr] gap-8 mb-10">
+            <div class="bg-white rounded-3xl p-5 md:p-6 shadow-sm">
+                <label for="blog-search" class="text-sm font-semibold text-gray-600">Search articles</label>
+                <div class="mt-3 flex items-center rounded-full border border-gray-200 px-5 py-3">
+                    <i class="fa-solid fa-magnifying-glass text-gray-400 mr-3"></i>
+                    <input id="blog-search" type="text" placeholder="Type title, keyword, or topic..."
+                        class="w-full bg-transparent outline-none text-base">
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl p-5 md:p-6 shadow-sm">
+                <p class="text-sm font-semibold text-gray-600 mb-3">Filter by category</p>
+                <div id="category-filters" class="flex flex-wrap gap-3">
+                    <button data-category="all"
+                        class="category-chip bg-[#4b8f4d] text-white px-5 py-2 rounded-full text-sm font-semibold">All</button>
+                    <button data-category="focus"
+                        class="category-chip bg-[#f2efe9] text-gray-800 px-5 py-2 rounded-full text-sm font-semibold">Focus</button>
+                    <button data-category="brew-guides"
+                        class="category-chip bg-[#f2efe9] text-gray-800 px-5 py-2 rounded-full text-sm font-semibold">Brew Guides</button>
+                    <button data-category="origins"
+                        class="category-chip bg-[#f2efe9] text-gray-800 px-5 py-2 rounded-full text-sm font-semibold">Origins</button>
+                    <button data-category="community"
+                        class="category-chip bg-[#f2efe9] text-gray-800 px-5 py-2 rounded-full text-sm font-semibold">Community</button>
+                    <button data-category="rituals"
+                        class="category-chip bg-[#f2efe9] text-gray-800 px-5 py-2 rounded-full text-sm font-semibold">Rituals</button>
+                </div>
+            </div>
+        </div>
+
+        <article id="featured-post" class="relative overflow-hidden rounded-[2rem] bg-zinc-900 text-white mb-10">
+            <img src="{% static 'images/hero2.jpg' %}" alt="Featured article"
+                class="absolute inset-0 w-full h-full object-cover opacity-45">
+            <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+            <div class="relative z-10 p-8 md:p-12 lg:p-14 max-w-3xl">
+                <span class="inline-block bg-emerald-600 text-white text-xs uppercase tracking-wider px-4 py-2 rounded-full mb-6">Featured</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">The Ritual of Slow Coffee: How to Build a Morning Practice You’ll Keep</h2>
+                <p class="mt-5 text-white/90 text-base md:text-lg leading-relaxed">
+                    Build consistency, focus, and calm with a coffee ritual designed for real mornings. From bean choice to first sip, this guide helps you create a meaningful routine.
+                </p>
+                <button data-readmore="featured"
+                    class="read-more-btn mt-8 inline-flex items-center gap-2 bg-white text-zinc-900 hover:bg-emerald-500 hover:text-white transition px-6 py-3 rounded-full font-semibold">
+                    Read Full Story <i class="fa-solid fa-arrow-right text-sm"></i>
+                </button>
+            </div>
+        </article>
+
+        <div class="flex items-center justify-between mb-6">
+            <h3 class="text-3xl md:text-4xl font-extrabold text-zinc-900">Recent Articles</h3>
+            <p id="results-count" class="text-sm md:text-base font-semibold text-gray-600">Showing 0 articles</p>
+        </div>
+
+        <div id="blog-grid" class="grid sm:grid-cols-2 xl:grid-cols-3 gap-7"></div>
+
+        <div class="mt-12 flex items-center justify-center gap-3" id="pagination"></div>
+    </div>
+</section>
+
+<section class="bg-zinc-950 py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <span class="text-emerald-500 text-sm uppercase tracking-[0.2em] font-semibold">Newsletter</span>
+        <h3 class="mt-3 text-4xl md:text-5xl font-extrabold text-white">Get fresh coffee stories weekly</h3>
+        <p class="mt-4 text-gray-300">Receive brew tips, café updates, and practical barista insights every Friday.</p>
+        <form class="mt-8 flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto">
+            <input type="email" placeholder="Enter your email"
+                class="flex-1 h-14 rounded-full px-6 bg-white text-zinc-900 outline-none">
+            <button type="button"
+                class="h-14 px-8 rounded-full bg-[#4b8f4d] hover:bg-[#3f7a41] text-white font-bold transition">Subscribe</button>
+        </form>
+    </div>
+</section>
+
+<div id="readmore-modal" class="fixed inset-0 z-[9999] bg-black/60 hidden items-center justify-center p-4">
+    <div class="bg-white w-full max-w-3xl rounded-3xl overflow-hidden shadow-2xl">
+        <div class="p-6 md:p-8 border-b border-gray-200 flex items-start justify-between gap-4">
+            <h4 id="modal-title" class="text-2xl md:text-3xl font-extrabold text-zinc-900"></h4>
+            <button id="close-modal" class="h-10 w-10 rounded-full bg-gray-100 hover:bg-gray-200">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="p-6 md:p-8">
+            <p id="modal-meta" class="text-sm text-gray-500 mb-4"></p>
+            <p id="modal-content" class="text-base text-gray-700 leading-relaxed"></p>
+        </div>
+    </div>
+</div>
+
+<script>
+(() => {
+    const posts = [
+        {
+            id: 1,
+            title: "The Alchemy of Focus",
+            category: "focus",
+            date: "May 12, 2026",
+            views: 552,
+            comments: 0,
+            image: "{% static 'images/tasty-coffee.jpg' %}",
+            excerpt: "Coffee doesn’t just wake you up—it sharpens your mind. Build a deep-work ritual around your first cup.",
+            content: "A productive coffee ritual starts before the first sip. Choose a consistent brew method, set a single intention, and remove distractions while brewing. The aroma acts as a cue that transitions your brain into focused work mode. Over time, your mind associates that sequence with clarity and momentum."
+        },
+        {
+            id: 2,
+            title: "Pour-Over Basics for Better Flavor",
+            category: "brew-guides",
+            date: "May 15, 2026",
+            views: 418,
+            comments: 4,
+            image: "{% static 'images/tasty-bakery.jpg' %}",
+            excerpt: "Master grind size, bloom time, and pour rate for cleaner, sweeter cups at home.",
+            content: "Start with a medium-fine grind, fresh beans, and a 1:16 coffee-to-water ratio. Bloom for 30–40 seconds to release gas, then pour in controlled circles. Keep your kettle steady and avoid over-agitation. These small details make the cup more balanced and expressive."
+        },
+        {
+            id: 3,
+            title: "Coffee Origins: Why Region Matters",
+            category: "origins",
+            date: "May 18, 2026",
+            views: 603,
+            comments: 2,
+            image: "{% static 'images/products-bag1.jpg' %}",
+            excerpt: "From Ethiopia’s florals to Colombia’s caramel notes—origin shapes every sip.",
+            content: "Climate, altitude, soil, and processing all influence flavor. Ethiopian lots can be tea-like and floral, while Colombian coffees often lean toward caramel sweetness and bright citrus. Learning origin profiles helps you pick beans that match your taste faster."
+        },
+        {
+            id: 4,
+            title: "How Coffee Builds Community",
+            category: "community",
+            date: "May 20, 2026",
+            views: 377,
+            comments: 6,
+            image: "{% static 'images/gallery6.jpg' %}",
+            excerpt: "Coffeehouses remain one of the best spaces for conversation, ideas, and connection.",
+            content: "From casual chats to project planning, cafés foster interactions that digital spaces can’t fully replace. A shared table, warm drink, and relaxed environment create trust and creativity. Coffee is often the beginning of collaboration."
+        },
+        {
+            id: 5,
+            title: "A 10-Minute Evening Coffee Ritual",
+            category: "rituals",
+            date: "May 22, 2026",
+            views: 290,
+            comments: 1,
+            image: "{% static 'images/gallery2.jpg' %}",
+            excerpt: "Wind down with a calm decaf routine and mindful brewing sequence.",
+            content: "Choose a low-caffeine or decaf option, dim bright lights, and brew slowly. Focus on scent, warmth, and pace rather than stimulation. This turns coffee into a reflective ritual that signals your body to transition from work to rest."
+        },
+        {
+            id: 6,
+            title: "Espresso Shot Diagnostics at Home",
+            category: "brew-guides",
+            date: "May 25, 2026",
+            views: 481,
+            comments: 7,
+            image: "{% static 'images/gallery3.jpg' %}",
+            excerpt: "Fix sour, bitter, and weak shots using time, dose, and grind adjustments.",
+            content: "If your shot is sour, grind finer or extend brew time. If bitter, grind coarser or reduce contact time. Keep dose consistent, measure output, and target repeatability. Espresso improves quickly when one variable changes at a time."
+        }
+    ];
+
+    const perPage = 3;
+    let currentPage = 1;
+    let activeCategory = "all";
+    let searchTerm = "";
+
+    const grid = document.getElementById("blog-grid");
+    const pagination = document.getElementById("pagination");
+    const resultsCount = document.getElementById("results-count");
+    const searchInput = document.getElementById("blog-search");
+    const chips = document.querySelectorAll(".category-chip");
+    const modal = document.getElementById("readmore-modal");
+    const modalTitle = document.getElementById("modal-title");
+    const modalMeta = document.getElementById("modal-meta");
+    const modalContent = document.getElementById("modal-content");
+    const closeModal = document.getElementById("close-modal");
+
+    function filteredPosts() {
+        return posts.filter(post => {
+            const matchCategory = activeCategory === "all" || post.category === activeCategory;
+            const q = searchTerm.toLowerCase();
+            const matchSearch = !q || post.title.toLowerCase().includes(q) || post.excerpt.toLowerCase().includes(q) || post.category.toLowerCase().includes(q);
+            return matchCategory && matchSearch;
+        });
+    }
+
+    function renderPosts() {
+        const list = filteredPosts();
+        const totalPages = Math.max(1, Math.ceil(list.length / perPage));
+        if (currentPage > totalPages) currentPage = totalPages;
+
+        const start = (currentPage - 1) * perPage;
+        const pageItems = list.slice(start, start + perPage);
+
+        resultsCount.textContent = `Showing ${list.length} article${list.length === 1 ? "" : "s"}`;
+
+        grid.innerHTML = pageItems.map(post => `
+            <article class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group">
+                <div class="relative">
+                    <img src="${post.image}" alt="${post.title}" class="w-full h-60 object-cover">
+                    <span class="absolute top-4 left-4 bg-emerald-600 text-white text-xs font-medium px-4 py-1.5 rounded-full capitalize">${post.category.replace("-", " ")}</span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-4 text-xs text-gray-500 mb-4">
+                        <span><i class="fa-regular fa-calendar mr-1"></i>${post.date}</span>
+                        <span><i class="fa-regular fa-comment-dots mr-1"></i>${post.comments}</span>
+                        <span><i class="fa-regular fa-eye mr-1"></i>${post.views}</span>
+                    </div>
+                    <h4 class="text-xl font-extrabold text-zinc-900 mb-3 leading-tight">${post.title}</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">${post.excerpt}</p>
+                    <button data-readmore="${post.id}" class="read-more-btn text-emerald-600 font-semibold text-sm hover:text-emerald-700">
+                        Read More <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+            </article>
+        `).join("");
+
+        renderPagination(totalPages);
+        bindReadMore();
+    }
+
+    function renderPagination(totalPages) {
+        if (totalPages <= 1) {
+            pagination.innerHTML = "";
+            return;
+        }
+
+        let html = "";
+        for (let i = 1; i <= totalPages; i++) {
+            html += `
+                <button data-page="${i}" class="h-11 w-11 rounded-full text-sm font-bold ${i === currentPage ? "bg-[#4b8f4d] text-white" : "bg-white text-zinc-800 hover:bg-[#f2efe9]"}">
+                    ${i}
+                </button>
+            `;
+        }
+        pagination.innerHTML = html;
+
+        pagination.querySelectorAll("button").forEach(btn => {
+            btn.addEventListener("click", () => {
+                currentPage = Number(btn.dataset.page);
+                renderPosts();
+                window.scrollTo({ top: grid.offsetTop - 120, behavior: "smooth" });
+            });
+        });
+    }
+
+    function bindReadMore() {
+        document.querySelectorAll(".read-more-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const id = btn.dataset.readmore;
+                let post;
+                if (id === "featured") {
+                    post = {
+                        title: "The Ritual of Slow Coffee: How to Build a Morning Practice You’ll Keep",
+                        date: "May 28, 2026",
+                        category: "rituals",
+                        comments: 3,
+                        views: 824,
+                        content: "Sustainable routines are built from small, repeatable actions. Start by selecting one brew method and one cup. Keep your station tidy, pre-measure beans the night before, and brew in silence for two minutes. A meaningful coffee ritual creates emotional stability and makes your mornings more intentional."
+                    };
+                } else {
+                    post = posts.find(p => String(p.id) === id);
+                }
+                if (!post) return;
+
+                modalTitle.textContent = post.title;
+                modalMeta.textContent = `${post.date} • ${post.category.replace("-", " ")} • ${post.views} views • ${post.comments} comments`;
+                modalContent.textContent = post.content;
+                modal.classList.remove("hidden");
+                modal.classList.add("flex");
+                document.body.style.overflow = "hidden";
+            });
+        });
+    }
+
+    chips.forEach(chip => {
+        chip.addEventListener("click", () => {
+            chips.forEach(c => c.classList.remove("bg-[#4b8f4d]", "text-white"));
+            chips.forEach(c => c.classList.add("bg-[#f2efe9]", "text-gray-800"));
+            chip.classList.remove("bg-[#f2efe9]", "text-gray-800");
+            chip.classList.add("bg-[#4b8f4d]", "text-white");
+
+            activeCategory = chip.dataset.category;
+            currentPage = 1;
+            renderPosts();
+        });
+    });
+
+    searchInput.addEventListener("input", (e) => {
+        searchTerm = e.target.value.trim();
+        currentPage = 1;
+        renderPosts();
+    });
+
+    closeModal.addEventListener("click", () => {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        document.body.style.overflow = "";
+    });
+
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
+            document.body.style.overflow = "";
+        }
+    });
+
+    renderPosts();
+})();
+</script>
+{% endblock %}

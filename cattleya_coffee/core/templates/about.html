@@ -1,0 +1,226 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="relative min-h-[45vh] md:min-h-[52vh] bg-cover bg-center bg-no-repeat flex items-center justify-center"
+    style="background-image: url('{% static "images/coffee-dark-bg.jpg" %}');">
+    <div class="absolute inset-0 bg-black/70"></div>
+    <div class="relative z-10 text-center text-white mt-24 md:mt-28 px-6">
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight">About Us</h1>
+        <div class="mt-5 flex items-center justify-center gap-3 text-lg font-semibold">
+            <a href="{% url 'home' %}" class="text-emerald-500 hover:text-emerald-400">Home</a>
+            <span class="text-white/80">/</span>
+            <span>About</span>
+        </div>
+    </div>
+</section>
+
+<section class="bg-white py-16 md:py-24">
+    <div class="max-w-[1320px] mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+            <span class="text-emerald-600 uppercase tracking-[0.2em] text-xs font-bold">Our Story</span>
+            <h2 class="mt-4 text-4xl md:text-5xl font-extrabold text-zinc-900 leading-tight">Crafting coffee moments that feel personal, warm, and memorable.</h2>
+            <p class="mt-6 text-gray-600 text-base md:text-lg leading-relaxed">
+                Cattleya’s Coffee started as a small neighborhood brewing corner and evolved into a lifestyle café focused on quality, consistency, and community. We source responsibly, roast carefully, and serve with heart.
+            </p>
+            <p class="mt-4 text-gray-600 text-base md:text-lg leading-relaxed">
+                Every cup is part of a bigger journey—farm relationships, customer stories, and a team committed to making your daily coffee experience better than yesterday.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div class="bg-[#f8f4eb] rounded-3xl p-7">
+                <i class="fa-solid fa-seedling text-3xl text-emerald-600"></i>
+                <h3 class="mt-5 text-2xl font-extrabold text-zinc-900">Our Mission</h3>
+                <p class="mt-3 text-gray-600 leading-relaxed">Deliver exceptional coffee experiences through ethical sourcing, skilled brewing, and meaningful hospitality.</p>
+            </div>
+            <div class="bg-[#f8f4eb] rounded-3xl p-7">
+                <i class="fa-solid fa-eye text-3xl text-emerald-600"></i>
+                <h3 class="mt-5 text-2xl font-extrabold text-zinc-900">Our Vision</h3>
+                <p class="mt-3 text-gray-600 leading-relaxed">Become the most trusted coffee destination where quality and culture meet in every cup.</p>
+            </div>
+            <div class="bg-[#f8f4eb] rounded-3xl p-7 sm:col-span-2">
+                <i class="fa-solid fa-heart text-3xl text-emerald-600"></i>
+                <h3 class="mt-5 text-2xl font-extrabold text-zinc-900">Our Values</h3>
+                <p class="mt-3 text-gray-600 leading-relaxed">Craftsmanship, consistency, warmth, transparency, and a deep commitment to people and planet.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-[#f8f4eb] py-16 md:py-20">
+    <div class="max-w-[1320px] mx-auto px-6">
+        <div class="text-center mb-10">
+            <span class="text-emerald-600 uppercase tracking-[0.2em] text-xs font-bold">Our Journey</span>
+            <h2 class="mt-3 text-4xl md:text-5xl font-extrabold text-zinc-900">Gallery of milestones</h2>
+        </div>
+
+        <div id="journey-gallery" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <button data-gallery-id="gallery1" data-src="{% static 'images/gallery1.jpg' %}" class="gallery-item group relative overflow-hidden rounded-2xl">
+                <img src="{% static 'images/gallery1.jpg' %}" alt="Journey 1" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                <span class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition"></span>
+            </button>
+            <button data-gallery-id="gallery2" data-src="{% static 'images/gallery2.jpg' %}" class="gallery-item group relative overflow-hidden rounded-2xl">
+                <img src="{% static 'images/gallery2.jpg' %}" alt="Journey 2" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                <span class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition"></span>
+            </button>
+            <button data-gallery-id="gallery3" data-src="{% static 'images/gallery3.jpg' %}" class="gallery-item group relative overflow-hidden rounded-2xl">
+                <img src="{% static 'images/gallery3.jpg' %}" alt="Journey 3" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                <span class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition"></span>
+            </button>
+            <button data-gallery-id="gallery4" data-src="{% static 'images/gallery4.jpg' %}" class="gallery-item group relative overflow-hidden rounded-2xl">
+                <img src="{% static 'images/gallery4.jpg' %}" alt="Journey 4" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                <span class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition"></span>
+            </button>
+            <button data-gallery-id="gallery5" data-src="{% static 'images/gallery5.jpg' %}" class="gallery-item group relative overflow-hidden rounded-2xl">
+                <img src="{% static 'images/gallery5.jpg' %}" alt="Journey 5" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                <span class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition"></span>
+            </button>
+            <button data-gallery-id="gallery6" data-src="{% static 'images/gallery6.jpg' %}" class="gallery-item group relative overflow-hidden rounded-2xl">
+                <img src="{% static 'images/gallery6.jpg' %}" alt="Journey 6" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                <span class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition"></span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<section class="bg-white py-16 md:py-20">
+    <div class="max-w-[1320px] mx-auto px-6">
+        <div class="text-center mb-10">
+            <span class="text-emerald-600 uppercase tracking-[0.2em] text-xs font-bold">Testimonials</span>
+            <h2 class="mt-3 text-4xl md:text-5xl font-extrabold text-zinc-900">What our customers say</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <article class="bg-[#f8f4eb] rounded-3xl p-7">
+                <div class="text-emerald-600 text-xl mb-4">★★★★★</div>
+                <p class="text-gray-700 leading-relaxed">“The atmosphere is elegant yet welcoming. Their espresso is consistently rich and balanced every single time.”</p>
+                <h4 class="mt-5 font-extrabold text-zinc-900">— Miriam K.</h4>
+            </article>
+            <article class="bg-[#f8f4eb] rounded-3xl p-7">
+                <div class="text-emerald-600 text-xl mb-4">★★★★★</div>
+                <p class="text-gray-700 leading-relaxed">“Cattleya’s has become our team’s favorite place for meetings. Great coffee, great service, great energy.”</p>
+                <h4 class="mt-5 font-extrabold text-zinc-900">— Daniel R.</h4>
+            </article>
+            <article class="bg-[#f8f4eb] rounded-3xl p-7">
+                <div class="text-emerald-600 text-xl mb-4">★★★★★</div>
+                <p class="text-gray-700 leading-relaxed">“I love the quality of their beans and the baristas’ recommendations. You can feel the passion in every cup.”</p>
+                <h4 class="mt-5 font-extrabold text-zinc-900">— Aisha T.</h4>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="bg-zinc-950 py-16 md:py-20">
+    <div class="max-w-[1100px] mx-auto px-6">
+        <div class="text-center mb-10">
+            <span class="text-emerald-500 uppercase tracking-[0.2em] text-xs font-bold">FAQs</span>
+            <h2 class="mt-3 text-4xl md:text-5xl font-extrabold text-white">Frequently Asked Questions</h2>
+        </div>
+
+        <div id="faq-list" class="space-y-4">
+            <article class="faq-item bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+                <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between text-white font-semibold">
+                    Do you roast your coffee beans in-house?
+                    <i class="fa-solid fa-plus text-emerald-400"></i>
+                </button>
+                <div class="faq-content hidden px-6 pb-5 text-gray-300">Yes. We roast in controlled small batches to maintain freshness, flavor clarity, and consistency.</div>
+            </article>
+            <article class="faq-item bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+                <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between text-white font-semibold">
+                    Can I buy beans for home brewing?
+                    <i class="fa-solid fa-plus text-emerald-400"></i>
+                </button>
+                <div class="faq-content hidden px-6 pb-5 text-gray-300">Absolutely. We offer whole-bean and ground options, with recommendations based on your brew method.</div>
+            </article>
+            <article class="faq-item bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+                <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between text-white font-semibold">
+                    Do you host private coffee tastings?
+                    <i class="fa-solid fa-plus text-emerald-400"></i>
+                </button>
+                <div class="faq-content hidden px-6 pb-5 text-gray-300">Yes, private tastings are available for teams and events. Reach out through our contacts page to schedule.</div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="bg-[#4b8f4d] py-14 text-white text-center">
+    <div class="max-w-4xl mx-auto px-6">
+        <h3 class="text-3xl md:text-4xl font-extrabold">Ready to experience our coffee journey?</h3>
+        <p class="mt-3 text-white/90">Visit our shop, explore our stories, and find your next favorite roast.</p>
+        <a href="{% url 'shop:shop' %}" class="inline-block mt-6 bg-white text-[#2f5f32] font-bold px-8 py-3 rounded-full hover:bg-zinc-100 transition">
+            Explore Shop
+        </a>
+    </div>
+</section>
+
+<div id="gallery-modal" class="fixed inset-0 z-[9999] hidden items-center justify-center bg-black/80 p-4">
+    <button id="gallery-close" class="absolute top-5 right-5 h-10 w-10 rounded-full bg-white text-zinc-900 font-bold">×</button>
+    <img id="gallery-modal-image" src="" alt="Preview" class="max-h-[90vh] max-w-[95vw] object-contain rounded-xl">
+</div>
+
+<script>
+(() => {
+    const galleryItems = document.querySelectorAll(".gallery-item");
+    const modal = document.getElementById("gallery-modal");
+    const modalImage = document.getElementById("gallery-modal-image");
+    const closeBtn = document.getElementById("gallery-close");
+
+    function openPreview(src) {
+        modalImage.src = src;
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closePreview() {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        modalImage.src = "";
+        document.body.style.overflow = "";
+    }
+
+    galleryItems.forEach(item => {
+        item.addEventListener("click", () => {
+            openPreview(item.dataset.src);
+        });
+    });
+
+    closeBtn.addEventListener("click", closePreview);
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) closePreview();
+    });
+
+    // FAQ accordion
+    document.querySelectorAll(".faq-toggle").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const content = btn.parentElement.querySelector(".faq-content");
+            const icon = btn.querySelector("i");
+            const isOpen = !content.classList.contains("hidden");
+
+            document.querySelectorAll(".faq-content").forEach(el => el.classList.add("hidden"));
+            document.querySelectorAll(".faq-toggle i").forEach(el => {
+                el.classList.remove("fa-minus");
+                el.classList.add("fa-plus");
+            });
+
+            if (!isOpen) {
+                content.classList.remove("hidden");
+                icon.classList.remove("fa-plus");
+                icon.classList.add("fa-minus");
+            }
+        });
+    });
+
+    // Auto-open from index gallery click query param: ?preview=gallery3
+    const params = new URLSearchParams(window.location.search);
+    const previewId = params.get("preview");
+    if (previewId) {
+        const target = document.querySelector(`[data-gallery-id="${previewId}"]`);
+        if (target) {
+            openPreview(target.dataset.src);
+        }
+    }
+})();
+</script>
+{% endblock %}
