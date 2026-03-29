@@ -15,8 +15,8 @@
     <div class="absolute inset-0 flex items-center justify-center text-center px-6">
       <div class="max-w-4xl">
         <h1 class="text-6xl md:text-7xl font-bold text-white leading-none">Best Coffee<br><span class="text-emerald-400">Great Company</span></h1>
-        <p class="mt-8 text-white text-lg max-w-md mx-auto">Discounts for fresh desserts for large companies. The promotion starts after 6 pm every day except weekends and holidays.</p>
-        <a href="#" class="mt-10 inline-block slide-fill-btn text-lg">Taste Coffee</a>
+        <p class="mt-8 text-white text-lg max-w-md mx-auto">Discounts for large orders. The promotion starts after 6 pm every day except weekends and holidays.</p>
+        <a href="{% url 'shop:shop' %}" class="mt-10 inline-block slide-fill-btn text-lg">Taste Coffee</a>
       </div>
     </div>
   </div>
@@ -27,8 +27,8 @@
     <div class="absolute inset-0 flex items-center justify-center text-center px-6">
       <div class="max-w-4xl">
         <h1 class="text-6xl md:text-7xl font-bold text-white leading-none">Time to Discover<br><span class="text-emerald-400">Cattleya House</span></h1>
-        <p class="mt-8 text-white text-lg">Master classes from our barista at 8pm this Friday. Taste different types of craft coffee and perfect fresh bakery from our chef.</p>
-        <a href="#" class="mt-10 inline-block slide-fill-btn text-lg">Taste Coffee</a>
+        <p class="mt-8 text-white text-lg">Discover the perfect blend of tradition and innovation in every cup of our carefully crafted coffee.</p>
+        <a href="{% url 'shop:shop' %}" class="mt-10 inline-block slide-fill-btn text-lg">Taste Coffee</a>
       </div>
     </div>
   </div>
@@ -38,9 +38,9 @@
     <div class="absolute inset-0 bg-gradient-to-b from-black/30 to-black/60"></div>
     <div class="absolute inset-0 flex items-center justify-center text-center px-6">
       <div class="max-w-4xl">
-        <h1 class="text-6xl md:text-7xl font-bold text-white leading-none">Sweet Bakery<br><span class="text-emerald-400">Perfect Morning</span></h1>
-        <p class="mt-8 text-white text-lg">Free Wi-Fi, sockets near tables, friendly barista and a cozy atmosphere will help you in your exciting work or evening relax.</p>
-        <a href="#" class="mt-10 inline-block slide-fill-btn text-lg">Taste Coffee</a>
+        <h1 class="text-6xl md:text-7xl font-bold text-white leading-none">Sweet Coffee<br><span class="text-emerald-400">Perfect Morning</span></h1>
+        <p class="mt-8 text-white text-lg">When you think coffee, think Cattley’s Coffee Blend from Cattleya’s Coffee; a meticulously crafted medium-dark roast. .</p>
+        <a href="{% url 'shop:shop' %}" class="mt-10 inline-block slide-fill-btn text-lg">Taste Coffee</a>
       </div>
     </div>
   </div>
@@ -78,7 +78,7 @@
         
         <div class="absolute bottom-8 left-8 text-left">
           <span class="text-emerald-500 text-sm font-medium tracking-wider">For mood</span>
-          <h3 class="text-white text-3xl font-bold mt-1">Chocolate & Sweets</h3>
+          <h3 class="text-white text-3xl font-bold mt-1">Green Coffee</h3>
         </div>
       </div>
 
@@ -89,8 +89,8 @@
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70"></div>
         
         <div class="absolute bottom-8 left-8 text-left">
-          <span class="text-emerald-500 text-sm font-medium tracking-wider">For eating</span>
-          <h3 class="text-white text-3xl font-bold mt-1">Cakes & Bakery</h3>
+          <span class="text-emerald-500 text-sm font-medium tracking-wider">For evenings</span>
+          <h3 class="text-white text-3xl font-bold mt-1">Pure Arabica</h3>
         </div>
       </div>
 
@@ -107,12 +107,12 @@
     <div class="space-y-8 md:col-start-1 md:pr-12">
       <h2 class="text-6xl md:text-7xl font-semibold leading-none">
         Roasted Coffee<br>
-        <span class="text-emerald-600">for Your Mood</span>
+        <span class="text-emerald-600">For Your Mood</span>
       </h2>
       
       <p class="text-lg text-gray-300 max-w-lg">
-        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; 
-        Suspendisse potenti. Nunc a urna eget massa vulputate consectetur ut quis mi.
+        Expertly roasted in small batches to preserve the unique flavors; 
+        and aromas of each coffee variety.
       </p>
 
       <!-- Location -->
@@ -120,16 +120,16 @@
         <i class="fas fa-map-marker-alt text-emerald-500 text-2xl"></i>
         <div>
           <span class="text-emerald-500 font-medium">Our Location</span><br>
-          <span class="text-sm">Rio de Janeiro, RJ Brazil, 04103 Route</span>
+          <span class="text-sm">Madhvani Foundation Building Jinja Road, Kampala</span>
         </div>
       </div>
 
       <!-- Buttons -->
       <div class="flex gap-4">
-        <a href="#" class="slide-fill-btn text-lg">
+        <a href="{% url 'blog' %}" class="slide-fill-btn text-lg">
           Read More
         </a>
-        <a href="#" class="slide-fill-btn text-lg">
+        <a href="{% url 'contacts' %}" class="slide-fill-btn text-lg">
           Contact us
         </a>
       </div>
@@ -167,8 +167,7 @@
         </span>
 
         <div class="relative aspect-[4/5] bg-[#f8f1e9] overflow-hidden">
-          <img src="{% static 'images/products-bag1.jpg' %}" 
-               alt="Nicaragua" 
+          <img src="{% static 'images/products-bag1.jpg' %}"  
                class="w-full h-full object-contain transition-all duration-500 group-hover:scale-110">
 
           <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -179,7 +178,7 @@
         </div>
 
         <div class="p-6 text-center">
-          <h3 class="font-medium text-gray-900">Nicaragua Whole Bean</h3>
+          <h3 class="font-medium text-gray-900">Ground Coffee Beans</h3>
           <div class="flex justify-center gap-2 text-sm mt-2">
             <span class="line-through text-gray-400">$12.99</span>
             <span class="text-emerald-600 font-bold">$11.49</span>
@@ -195,7 +194,6 @@
 
         <div class="relative aspect-[4/5] bg-[#f5f0e8] overflow-hidden">
           <img src="{% static 'images/products-bag2.jpg' %}" 
-               alt="Ethiopia Arabica" 
                class="w-full h-full object-contain transition-all duration-500 group-hover:scale-110">
 
           <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -206,7 +204,7 @@
         </div>
 
         <div class="p-6 text-center">
-          <h3 class="font-medium text-gray-900">Ethiopia Arabica</h3>
+          <h3 class="font-medium text-gray-900">Roasted Coffee Beans</h3>
           <div class="flex justify-center gap-2 text-sm mt-2">
             <span class="line-through text-gray-400">$19.99</span>
             <span class="text-emerald-600 font-bold">$16.99</span>
@@ -218,7 +216,6 @@
       <div class="group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl hover:rotate-1 transition-all duration-300">
         <div class="relative aspect-[4/5] bg-[#f8f1e9] overflow-hidden">
           <img src="{% static 'images/products-bag3.jpg' %}" 
-               alt="Peru Whole Bean" 
                class="w-full h-full object-contain transition-all duration-500 group-hover:scale-110">
 
           <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -229,7 +226,7 @@
         </div>
 
         <div class="p-6 text-center">
-          <h3 class="font-medium text-gray-900">Peru Whole Bean</h3>
+          <h3 class="font-medium text-gray-900">Green Coffee Bean</h3>
           <div class="text-emerald-600 font-bold text-sm mt-2">$42.49</div>
         </div>
       </div>
@@ -242,7 +239,6 @@
 
         <div class="relative aspect-[4/5] bg-[#f8f1e9] overflow-hidden">
           <img src="{% static 'images/products-bag4.jpg' %}" 
-               alt="Colombia Supremo" 
                class="w-full h-full object-contain transition-all duration-500 group-hover:scale-110">
 
           <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -253,7 +249,7 @@
         </div>
 
         <div class="p-6 text-center">
-          <h3 class="font-medium text-gray-900">Colombia Supremo</h3>
+          <h3 class="font-medium text-gray-900">Roasted Green Coffee</h3>
           <div class="flex justify-center gap-2 text-sm mt-2">
             <span class="line-through text-gray-400">$24.99</span>
             <span class="text-emerald-600 font-bold">$19.99</span>
@@ -287,7 +283,7 @@
         </div>
         <div class="p-6">
           <div class="flex items-center gap-4 text-xs text-gray-500 mb-4">
-            <span>🗓 May 12, 2020</span>
+            <span>🗓 May 12, 2025</span>
             <span class="flex items-center gap-1"><i class="fas fa-comment-dots"></i> 0</span>
             <span class="flex items-center gap-1"><i class="fas fa-eye"></i> 552</span>
           </div>
@@ -295,7 +291,7 @@
           <p class="text-gray-600 text-sm line-clamp-3 mb-6">
             Coffee doesn't just wake you up—it sharpens the mind. Discover how to harness the transformative power of focus and create a ritual that tells your brain it's time to create.
           </p>
-          <a href="#" class="text-emerald-600 font-medium text-sm hover:text-emerald-700">Read More →</a>
+          <a href="{% url 'blog' %}" class="text-emerald-600 font-medium text-sm hover:text-emerald-700">Read More →</a>
         </div>
       </div>
 
@@ -307,7 +303,7 @@
         </div>
         <div class="p-6">
           <div class="flex items-center gap-4 text-xs text-gray-500 mb-4">
-            <span>🗓 May 12, 2020</span>
+            <span>🗓 May 22, 2025</span>
             <span class="flex items-center gap-1"><i class="fas fa-comment-dots"></i> 0</span>
             <span class="flex items-center gap-1"><i class="fas fa-eye"></i> 472</span>
           </div>
@@ -315,7 +311,7 @@
           <p class="text-gray-600 text-sm line-clamp-3 mb-6">
             From coffeehouse meetings to kitchen-table talks, coffee is a connector. Learn how a simple cup becomes the bridge between hearts, hands, and minds.
           </p>
-          <a href="#" class="text-emerald-600 font-medium text-sm hover:text-emerald-700">Read More →</a>
+          <a href="{% url 'blog' %}" class="text-emerald-600 font-medium text-sm hover:text-emerald-700">Read More →</a>
         </div>
       </div>
 
@@ -327,7 +323,7 @@
         </div>
         <div class="p-6">
           <div class="flex items-center gap-4 text-xs text-gray-500 mb-4">
-            <span>🗓 May 12, 2020</span>
+            <span>🗓 June 8, 2025</span>
             <span class="flex items-center gap-1"><i class="fas fa-comment-dots"></i> 0</span>
             <span class="flex items-center gap-1"><i class="fas fa-eye"></i> 462</span>
           </div>
@@ -335,7 +331,7 @@
           <p class="text-gray-600 text-sm line-clamp-3 mb-6">
             That steamy cup forces a pause in a frantic day. Turn brewing into meditation, and experience the profound power of presence in five mindful minutes.
           </p>
-          <a href="#" class="text-emerald-600 font-medium text-sm hover:text-emerald-700">Read More →</a>
+          <a href="{% url 'blog' %}" class="text-emerald-600 font-medium text-sm hover:text-emerald-700">Read More →</a>
         </div>
       </div>
 
@@ -347,7 +343,7 @@
         </div>
         <div class="p-6">
           <div class="flex items-center gap-4 text-xs text-gray-500 mb-4">
-            <span>🗓 May 12, 2020</span>
+            <span>🗓 June 10, 2025</span>
             <span class="flex items-center gap-1"><i class="fas fa-comment-dots"></i> 0</span>
             <span class="flex items-center gap-1"><i class="fas fa-eye"></i> 431</span>
           </div>
@@ -355,14 +351,14 @@
           <p class="text-gray-600 text-sm line-clamp-3 mb-6">
             A daily devotion for coffee lovers. Discover why that quiet moment with steam rising between your palms is a sacred pact of self-respect and wonder.
           </p>
-          <a href="#" class="text-emerald-600 font-medium text-sm hover:text-emerald-700">Read More →</a>
+          <a href="{% url 'blog' %}" class="text-emerald-600 font-medium text-sm hover:text-emerald-700">Read More →</a>
         </div>
       </div>
 
     </div>
 
 <div class="flex justify-center mt-12">
-  <a href="#" 
+  <a href="{% url 'blog' %}" 
      class="special-read-more-btn px-16 py-6 rounded-2xl font-semibold text-xl tracking-wide">
     Read More
   </a>

@@ -41,45 +41,7 @@
 
       <!-- Products Dropdown -->
 
-<li class="relative group">
-  <a href="{% url 'shop:shop' %}" 
-     class="text-emerald-600 hover:text-emerald-700 font-medium text-base transition-colors">
-    Products
-  </a>
-
-  <!-- THE DROPDOWN – EXACTLY LIKE YOUR IMAGE -->
-  <div class="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-56 bg-white rounded-3xl shadow-2xl py-6 px-7 
-              opacity-0 invisible group-hover:opacity-100 group-hover:visible 
-              transition-all duration-300 z-50">
-    
-    <ul class="space-y-4 text-base">
-      <li>
-       <a href="{% url 'shop:shop' %}"
-           class="block text-emerald-600 hover:text-emerald-700 font-medium transition-colors">
-          Shop
-        </a>
-      </li>
-      <li>
-        <a href="{% url 'shop:cart' %}" 
-           class="block text-slate-700 hover:text-slate-900 transition-colors">
-          Cart
-        </a>
-      </li>
-      <li>
-        <a href="{% url 'shop:checkout' %}" 
-           class="block text-slate-700 hover:text-slate-900 transition-colors">
-          Checkout
-        </a>
-      </li>
-      <li>
-        <a href="{% url 'shop:account' %}" 
-           class="block text-slate-700 hover:text-slate-900 transition-colors">
-          My account
-        </a>
-      </li>
-    </ul>
-  </div>
-</li>
+<a href="{% url 'shop:shop' %}" class="hover:text-emerald-400 transition">Products</a>
 
       <a href="{% url 'blog' %}" class="hover:text-emerald-400 transition">Blog</a>
       <a href="{% url 'contacts' %}" class="hover:text-emerald-400 transition">Contacts</a>
