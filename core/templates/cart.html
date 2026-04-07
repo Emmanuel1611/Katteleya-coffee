@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Hero / Page Header -->
+<div class="relative min-h-[45vh] md:min-h-[50vh] bg-cover bg-center bg-no-repeat flex items-center justify-center"
+    style="background-image: url('{% static "images/coffee-dark-bg.jpg" %}');">
+    <div class="absolute inset-0 bg-black/65"></div>
+</div>
+
+<!-- Main content -->
+<div class="bg-zinc-950 text-white py-12 sm:py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+
+        {% if cart_items %}
+
+        <!-- Filled cart -->
+        <p class="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 sm:mb-10">
+            You have {{ cart_items.count }} item{{ cart_items.count|pluralize }} in your cart.
+        </p>
+
+        <div class="max-w-3xl mx-auto">
+            {% for item in cart_items %}
+            <div class="flex flex-col sm:flex-row items-center gap-6 bg-zinc-900 p-6 rounded-2xl mb-6">
+
+                <!-- Product image -->
+                <div class="w-24 h-24 flex-shrink-0 bg-zinc-800 rounded-xl overflow-hidden">
+                    {% if item.product.image %}
+                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}"
+                        class="w-full h-full object-cover">
+                    {% else %}
+                    <div class="w-full h-full flex items-center justify-center text-4xl">☕</div>
+                    {% endif %}
+                </div>
+
+                <!-- Details -->
+                <div class="flex-1">
+                    <h3 class="text-xl font-semibold">{{ item.product.category }} - {{ item.product.name }}</h3>
+                    <p class="text-emerald-400 text-lg">Ugx.{{ item.product.price }}</p>
+                </div>
+
+                <!-- Quantity controls -->
+                <div class="flex items-center gap-3">
+                    <form method="post" action="{% url 'update_cart_item' item.id %}" class="cart-update-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="decrease">
+                        <button type="submit"
+                            class="w-8 h-8 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white text-xl flex items-center justify-center">-</button>
+                    </form>
+
+                    <span class="w-10 text-center text-2xl font-medium">{{ item.quantity }}</span>
+
+                    <form method="post" action="{% url 'update_cart_item' item.id %}" class="cart-update-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="increase">
+                        <button type="submit"
+                            class="w-8 h-8 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white text-xl flex items-center justify-center">+</button>
+                    </form>
+                </div>
+
+                <!-- Subtotal + remove -->
+                <div class="text-right">
+                    <div class="text-2xl font-semibold text-emerald-400">Ugx. {{ item.get_total_price }}</div>
+                    <form method="post" action="{% url 'update_cart_item' item.id %}" class="mt-4">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="remove">
+                        <button type="submit" class="text-red-400 hover:text-red-500 text-sm flex items-center gap-1">
+                            <span>Remove</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- Cart total -->
+            <div class="flex justify-between items-center border-t border-zinc-700 pt-8 mt-8 text-3xl font-semibold">
+                <span class="text-gray-400">Total</span>
+                <span class="text-emerald-400">Ugx.{{ cart.get_total_price }}</span>
+            </div>
+
+            <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="{% url 'home' %}"
+                    class="px-12 py-6 text-lg font-medium border border-zinc-600 hover:border-white rounded-full text-center">Continue
+                    Shopping</a>
+                <a href="{% url 'shop:checkout' %}"
+                    class="px-12 py-6 text-lg font-medium bg-emerald-600 hover:bg-emerald-500 rounded-full text-center">Proceed
+                    to Checkout</a>
+            </div>
+        </div>
+
+        {% else %}
+
+        <!-- Empty Cart -->
+        <div class="py-12 sm:py-16 md:py-20">
+            <div class="inline-block border-t-2 border-b-2 border-emerald-700/40 py-8 sm:py-10 px-8 sm:px-12 md:px-20">
+                <p class="text-xl sm:text-2xl md:text-3xl font-light text-gray-200 leading-relaxed">
+                    Your cart is currently empty.
+                </p>
+            </div>
+
+            <!-- Big centered green button -->
+            <div class="mt-10 sm:mt-12">
+                <a href="{% url 'home' %}" class="slide-fill-btn inline-block text-white 
+            text-base sm:text-lg md:text-xl font-medium 
+            px-10 sm:px-12 md:px-16 py-4 sm:py-5 md:py-6 rounded-full 
+            transition-all duration-300 shadow-lg hover:shadow-emerald-900/30">
+                    Return to shop
+                </a>
+            </div>
+        </div>
+
+        {% endif %}
+
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block header %}
+<div class="relative z-10 text-center px-4 sm:px-6">
+    <nav class="text-emerald-500 text-xs sm:text-sm md:text-base uppercase tracking-widest mb-4 sm:mb-5">
+        <a href="{% url 'home' %}" class="hover:text-white transition-colors">Home</a>
+        <span class="mx-3 text-gray-400">/</span>
+        <span class="text-white font-medium">Cart</span>
+    </nav>
+
+    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-none">
+        Cart
+    </h1>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.querySelectorAll('.cart-update-form').forEach(form => {
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const url = this.action;
+            const csrfToken = this.querySelector('[name=csrfmiddlewaretoken]').value;
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    body: new FormData(this),
+                    headers: {
+                        'X-CSRFToken': csrfToken,
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    location.reload();  // reload cart properly
+                } else {
+                    alert('Update failed.');
+                }
+
+            } catch (error) {
+                console.error(error);
+                alert('Something went wrong.');
+            }
+        });
+    });
+</script>
+{% endblock %}
+
+{% block footer %}
+{% include 'partials/footer.html' %}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% load static %}
+{% for product in products %}
+    <article class="text-center group">
+        <div class="bg-[#faf7f2] p-10 relative overflow-hidden">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-auto object-contain transition-opacity duration-300 group-hover:opacity-30">
+            {% else %}
+            <img src="{% static 'images/products-bag1.jpg' %}" alt="{{ product.name }}" class="w-full h-auto object-contain transition-opacity duration-300 group-hover:opacity-30">
+            {% endif %}
+
+            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <form method="post" action="{% url 'add_to_cart' product.id %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="quantity" value="1">
+                    <button type="submit" class="slide-fill-btn text-base px-8 py-3 rounded-full">Add to cart</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="mt-6 text-[#e3ac24] text-xl tracking-[3px]">★★★★★</div>
+        <h4 class="mt-2 text-2xl font-extrabold leading-tight">{{ product.name }}</h4>
+        <p class="mt-2 text-[#2f8c3f] text-2xl font-extrabold">Ugx.{{ product.price|floatformat:0 }}</p>
+    </article>
+{% empty %}
+<div class="col-span-full p-10">
+    <p class="text-lg text-gray-600 text-center">No products found{% if query %} for "{{ query }}"{% endif %}{% if min_price or max_price %} within Ugx.{{ min_price|default:"0" }} — Ugx{{ max_price|default:"50.000" }}{% endif %}.</p>
+</div>
+{% endfor %}
+

@@ -1,0 +1,440 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cattleya’s Coffee</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <!-- Coffee Loader -->
+
+
+  <div id="coffee-loader"
+    class="fixed inset-0 z-[9999] flex items-center justify-center bg-white/95 dark:bg-zinc-900 transition-opacity duration-700">
+
+    <div class="flex flex-col items-center gap-8">
+
+      <!-- Modern Coffee Aroma – Animated Steam (the only visual) -->
+      <div class="relative flex items-end gap-5 h-24 w-[140px]">
+        <div
+          class="steam w-4 h-10 bg-gradient-to-t from-transparent via-emerald-400 to-emerald-500 rounded-full animate-steam">
+        </div>
+        <div
+          class="steam w-5 h-14 bg-gradient-to-t from-transparent via-emerald-400 to-emerald-500 rounded-full animate-steam"
+          style="animation-delay: 120ms"></div>
+        <div
+          class="steam w-3 h-9 bg-gradient-to-t from-transparent via-emerald-400 to-emerald-500 rounded-full animate-steam"
+          style="animation-delay: 240ms"></div>
+        <div
+          class="steam w-6 h-16 bg-gradient-to-t from-transparent via-emerald-400 to-emerald-500 rounded-full animate-steam"
+          style="animation-delay: 80ms"></div>
+        <div
+          class="steam w-4 h-11 bg-gradient-to-t from-transparent via-emerald-400 to-emerald-500 rounded-full animate-steam"
+          style="animation-delay: 320ms"></div>
+      </div>
+
+      <!-- Typography – clean, modern, spacious -->
+      <div class="text-center">
+        <p class="font-light text-4xl tracking-[0.25em] text-slate-700 dark:text-slate-200">
+          BREWING
+        </p>
+        <p class="mt-1 text-emerald-600 dark:text-emerald-400 font-medium tracking-widest text-lg">
+          YOUR PAGE...
+        </p>
+        <p class="mt-3 text-xs text-slate-400 dark:text-slate-500 font-mono">just a moment ☕</p>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;family=Space+Grotesk:wght@500&amp;display=swap');
+
+    .steam {
+      animation: steam-rise 1.65s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+      opacity: 0;
+    }
+
+    @keyframes steam-rise {
+      0% {
+        transform: translateY(0) scale(0.6);
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 0.85;
+      }
+
+      80% {
+        opacity: 0.85;
+      }
+
+      100% {
+        transform: translateY(-92px) scale(1.15);
+        opacity: 0;
+      }
+    }
+
+    /* Gentle stagger + natural variation */
+    .steam:nth-child(1) {
+      animation-delay: 0ms;
+    }
+
+    .steam:nth-child(2) {
+      animation-delay: 120ms;
+    }
+
+    .steam:nth-child(3) {
+      animation-delay: 240ms;
+    }
+
+    .steam:nth-child(4) {
+      animation-delay: 80ms;
+    }
+
+    .steam:nth-child(5) {
+      animation-delay: 320ms;
+    }
+  </style>
+
+  <script>
+    // Auto-hide when page is ready – works on every Django template
+    document.addEventListener('DOMContentLoaded', () => {
+      const loader = document.getElementById('coffee-loader');
+
+      setTimeout(() => {
+        loader.style.opacity = '0';
+        setTimeout(() => {
+          loader.style.display = 'none';
+        }, 700);
+      }, 800);
+    });
+
+    // Optional: re-show for HTMX, fetch, or AJAX (uncomment if you use them)
+    // document.addEventListener('htmx:beforeRequest', () => {
+    //   const loader = document.getElementById('coffee-loader');
+    //   loader.style.display = 'flex';
+    //   loader.style.opacity = '1';
+    // });
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+    .liquid {
+      height: 0;
+      border-radius: 0 0 8px 8px;
+      animation: fill 2.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+      box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes fill {
+      0% {
+        height: 0;
+      }
+
+      100% {
+        height: 118px;
+      }
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+      animation: bubble-rise 2s infinite ease-in-out;
+    }
+
+    @keyframes bubble-rise {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.7;
+      }
+
+      50% {
+        transform: translateY(-55px) translateX(4px);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-135px) translateX(-3px);
+        opacity: 0;
+      }
+    }
+
+    .steam {
+      animation: steam-rise 1.8s ease-in-out infinite;
+    }
+
+    .animate-steam1 {
+      animation-delay: 0ms;
+    }
+
+    .animate-steam2 {
+      animation-delay: 280ms;
+    }
+
+    .animate-steam3 {
+      animation-delay: 520ms;
+    }
+
+    @keyframes steam-rise {
+      0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 0.3;
+      }
+
+      50% {
+        transform: translateY(-42px) scale(1.15);
+        opacity: 0.9;
+      }
+
+      100% {
+        transform: translateY(-78px) scale(0.6);
+        opacity: 0;
+      }
+    }
+
+    .dark .liquid {
+      background: linear-gradient(to top, #10b981, #34d399);
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const loader = document.getElementById('coffee-loader');
+      setTimeout(() => {
+        loader.style.opacity = '0';
+        setTimeout(() => { loader.style.display = 'none'; }, 700);
+      }, 900);
+    });
+  </script>
+
+  <style>
+    :root {
+      --primary-green: #2c9e09;
+    }
+
+    .hero-slide {
+      transition: opacity 0.8s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-green);
+    }
+
+    /* Parallax effect styles */
+    .parallax-section {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+
+    .parallax-element {
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
+    /* Override all emerald colors with primary green #2c9e09 */
+    .bg-emerald-50 {
+      background-color: rgba(44, 158, 9, 0.1) !important;
+    }
+
+    .bg-emerald-300 {
+      background-color: var(--primary-green) !important;
+    }
+
+    .bg-emerald-400 {
+      background-color: var(--primary-green) !important;
+    }
+
+    .bg-emerald-500 {
+      background-color: var(--primary-green) !important;
+    }
+
+    .bg-emerald-600 {
+      background-color: var(--primary-green) !important;
+    }
+
+    .bg-emerald-700 {
+      background-color: var(--primary-green) !important;
+    }
+
+    .text-emerald-300 {
+      color: var(--primary-green) !important;
+    }
+
+    .text-emerald-400 {
+      color: var(--primary-green) !important;
+    }
+
+    .text-emerald-500 {
+      color: var(--primary-green) !important;
+    }
+
+    .text-emerald-600 {
+      color: var(--primary-green) !important;
+    }
+
+    .text-emerald-700 {
+      color: var(--primary-green) !important;
+    }
+
+    .hover\:text-emerald-400:hover {
+      color: var(--primary-green) !important;
+    }
+
+    .hover\:bg-emerald-50:hover {
+      background-color: rgba(44, 158, 9, 0.1) !important;
+    }
+
+    .hover\:bg-emerald-700:hover {
+      background-color: var(--primary-green) !important;
+    }
+
+    .border-emerald-900 {
+      border-color: var(--primary-green) !important;
+    }
+
+    .accent-emerald-600 {
+      accent-color: var(--primary-green) !important;
+    }
+
+    /* Slide Fill Button Effect */
+    .slide-fill-btn {
+      position: relative;
+      border: 2px solid #000;
+      color: white;
+      background-color: transparent;
+      font-weight: bold;
+      padding: 0.5rem 2rem;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      transform: scale(1);
+      transition: all 300ms ease;
+    }
+
+    .slide-fill-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--primary-green);
+      z-index: -1;
+      transform: translateY(100%);
+      transition: transform 300ms ease;
+    }
+
+    .slide-fill-btn:hover {
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .slide-fill-btn:hover::before {
+      transform: translateY(0);
+    }
+  </style>
+  <script>
+    // Parallax scrolling effect
+    function initParallax() {
+      const parallaxElements = document.querySelectorAll('.parallax-element');
+
+      function updateParallax() {
+        parallaxElements.forEach(element => {
+          const rect = element.getBoundingClientRect();
+          const scrollPosition = window.scrollY;
+          const elementTop = element.offsetTop;
+          const elementHeight = element.offsetHeight;
+
+          // Only apply parallax when element is in viewport
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            const yPos = (scrollPosition - elementTop) * 0.5; // 0.5 is the parallax speed
+            element.style.transform = `translateY(${yPos}px)`;
+          }
+        });
+      }
+
+      window.addEventListener('scroll', updateParallax, { passive: true });
+      updateParallax(); // Initial call
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initParallax);
+    } else {
+      initParallax();
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.onscroll = function () {
+      const btn = document.getElementById("goTopBtn");
+      if (document.documentElement.scrollTop > 300 || document.body.scrollTop > 300) {
+        btn.style.opacity = "1";
+      } else {
+        btn.style.opacity = "0";
+      }
+    };
+
+    document.querySelectorAll('.group').forEach(group => {
+      group.addEventListener('click', function (e) {
+        if (window.innerWidth < 1024) {
+          e.preventDefault();
+          this.classList.toggle('active'); // add .active { opacity-100 !visible !important } in CSS if you want
+        }
+      });
+    });
+
+
+  </script>
+</head>
+
+<body class="font-sans">
+  {% include 'partials/header.html' %}
+  {% block content %}{% endblock %}
+  {% include 'partials/footer.html' %}
+  <script>
+    document.querySelectorAll('form.cart-update-form, form[action*="/update/"]').forEach(form => {
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const url = this.getAttribute('action');
+        const csrfToken = this.querySelector('input[name=csrfmiddlewaretoken]').value;
+
+        const response = await fetch(url, {
+          method: 'POST',
+          body: new FormData(this),
+          headers: { 'X-CSRFToken': csrfToken }
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          location.reload();        // refreshes the page with new quantity & total
+        } else {
+          console.error('Update failed:', data);
+          alert('Something went wrong. Please refresh the page.');
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>
