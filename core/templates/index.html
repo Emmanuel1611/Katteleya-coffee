@@ -1,0 +1,477 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- HERO SLIDER -->
+<div id="hero-slider" class="relative h-screen overflow-hidden">
+  <!-- Header is now absolute on top of this -->
+  {% include 'partials/header.html' %}
+
+  <!-- Slide 1 -->
+  <div id="slide-1" class="hero-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+    style="background-image: url('{% static "images/hero1.jpg" %}')">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/30 to-black/60"></div>
+    <div class="absolute inset-0 flex items-center justify-center text-center px-4 sm:px-6">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-none">Best Coffee<br><span
+            class="text-emerald-400">Great Company</span></h1>
+        <p class="mt-6 sm:mt-8 text-white text-base sm:text-lg max-w-md mx-auto">Discounts for large orders. The
+          promotion starts after 6 pm every day except weekends and holidays.</p>
+        <a href="{% url 'shop:shop' %}" class="mt-8 sm:mt-10 inline-block slide-fill-btn text-base sm:text-lg">Taste
+          Coffee</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div id="slide-2" class="hero-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0"
+    style="background-image: url('{% static "images/hero2.jpg" %}')">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/30 to-black/60"></div>
+    <div class="absolute inset-0 flex items-center justify-center text-center px-4 sm:px-6">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-none">Time to
+          Discover<br><span class="text-emerald-400">Cattleya House</span></h1>
+        <p class="mt-6 sm:mt-8 text-white text-base sm:text-lg">Discover the perfect blend of tradition and innovation
+          in every cup of our carefully crafted coffee.</p>
+        <a href="{% url 'shop:shop' %}" class="mt-8 sm:mt-10 inline-block slide-fill-btn text-base sm:text-lg">Taste
+          Coffee</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 3 -->
+  <div id="slide-3" class="hero-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0"
+    style="background-image: url('{% static "images/hero3.jpg" %}')">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/30 to-black/60"></div>
+    <div class="absolute inset-0 flex items-center justify-center text-center px-4 sm:px-6">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-none">Sweet Coffee<br><span
+            class="text-emerald-400">Perfect Morning</span></h1>
+        <p class="mt-6 sm:mt-8 text-white text-base sm:text-lg">When you think coffee, think Cattley’s Coffee Blend from
+          Cattleya’s Coffee; a meticulously crafted medium-dark roast. .</p>
+        <a href="{% url 'shop:shop' %}" class="mt-8 sm:mt-10 inline-block slide-fill-btn text-base sm:text-lg">Taste
+          Coffee</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slider controls -->
+  <button onclick="prevSlide()"
+    class="absolute left-4 sm:left-8 top-1/2 text-4xl sm:text-5xl text-white hover:text-emerald-400 transition z-10">‹</button>
+  <button onclick="nextSlide()"
+    class="absolute right-4 sm:right-8 top-1/2 text-4xl sm:text-5xl text-white hover:text-emerald-400 transition z-10">›</button>
+</div>
+
+<!-- TASTY PRODUCTS (exact grid from screenshot) -->
+<section class="py-12 md:py-16 bg-zinc-950">
+  <div class="max-w-9xl mx-auto px-4 sm:px-6">
+    <h2 class="text-center text-white text-4xl md:text-5xl font-bold mb-4">Tasty Products</h2>
+    <p class="text-center text-gray-400 mb-12 md:mb-16">Cattleya's Menu</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      <!-- Card 1: Tea and Coffee -->
+      <div class="group relative overflow-hidden rounded-3xl">
+        <img src="{% static 'images/tasty-coffee.jpg' %}"
+          class="w-full h-80 md:h-[420px] object-cover transition-transform duration-700 group-hover:scale-110">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70"></div>
+
+        <div class="absolute bottom-6 md:bottom-8 left-6 md:left-8 text-left">
+          <span class="text-emerald-500 text-sm font-medium tracking-wider">Hot drinks</span>
+          <h3 class="text-white text-2xl md:text-3xl font-bold mt-1">Tea and Coffee</h3>
+        </div>
+      </div>
+      <!-- Card 2: Chocolate & Sweets -->
+      <div class="group relative overflow-hidden rounded-3xl">
+        <img src="{% static 'images/tasty-chocolate.jpg' %}"
+          class="w-full h-80 md:h-[420px] object-cover transition-transform duration-700 group-hover:scale-110">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70"></div>
+
+        <div class="absolute bottom-6 md:bottom-8 left-6 md:left-8 text-left">
+          <span class="text-emerald-500 text-sm font-medium tracking-wider">For mood</span>
+          <h3 class="text-white text-2xl md:text-3xl font-bold mt-1">Green Coffee</h3>
+        </div>
+      </div>
+      <!-- Card 3: Cakes & Bakery -->
+      <div class="group relative overflow-hidden rounded-3xl">
+        <img src="{% static 'images/tasty-bakery.jpg' %}"
+          class="w-full h-80 md:h-[420px] object-cover transition-transform duration-700 group-hover:scale-110">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70"></div>
+
+        <div class="absolute bottom-6 md:bottom-8 left-6 md:left-8 text-left">
+          <span class="text-emerald-500 text-sm font-medium tracking-wider">For evenings</span>
+          <h3 class="text-white text-2xl md:text-3xl font-bold mt-1">Pure Arabica</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROASTED COFFEE SECTION -->
+<section class="relative min-h-[70vh] md:min-h-[85vh] text-white overflow-hidden flex items-center"
+  style="background-image: url('{% static 'images/roasted-bg.jpg' %}'); background-size: cover; background-position: center; background-attachment: fixed;">
+  <div class="absolute inset-0 bg-black/60"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-8 md:gap-12 items-center relative z-10">
+
+    <!-- LEFT TEXT -->
+    <div class="space-y-6 md:space-y-8 md:col-start-1 md:pr-12">
+      <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-none">
+        Roasted Coffee<br>
+        <span class="text-emerald-600">For Your Mood</span>
+      </h2>
+
+      <p class="text-base md:text-lg text-gray-300 max-w-lg">
+        Expertly roasted in small batches to preserve the unique flavors;
+        and aromas of each coffee variety.
+      </p>
+      <!-- Location -->
+      <div class="flex items-center gap-3">
+        <i class="fas fa-map-marker-alt text-emerald-500 text-2xl"></i>
+        <div>
+          <span class="text-emerald-500 font-medium">Our Location</span><br>
+          <span class="text-sm">Madhvani Foundation Building Jinja Road, Kampala</span>
+        </div>
+      </div>
+      <!-- Buttons -->
+      <div class="flex gap-4">
+        <a href="{% url 'blog' %}" class="slide-fill-btn text-base md:text-lg">
+          Read More
+        </a>
+        <a href="{% url 'contacts' %}" class="slide-fill-btn text-base md:text-lg">
+          Contact us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES BAR -->
+<div class="bg-emerald-600 py-8 md:py-10">
+  <div
+    class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 md:gap-8 text-white text-center text-sm">
+    <div><i class="fas fa-seedling text-3xl mb-2"></i><br>Wide Assortment</div>
+    <div><i class="fas fa-coffee text-3xl mb-2"></i><br>Excellent Grinding</div>
+    <div><i class="fas fa-mug-hot text-3xl mb-2"></i><br>Awesome Aroma</div>
+    <div><i class="fas fa-award text-3xl mb-2"></i><br>High Quality</div>
+    <div><i class="fas fa-fire text-3xl mb-2"></i><br>Proper Roasting</div>
+    <div><i class="fas fa-leaf text-3xl mb-2"></i><br>Pure Grades</div>
+  </div>
+</div>
+
+<!-- TAKE WITH YOU – Online Store (exact product cards) -->
+<section class="py-16 md:py-24 bg-zinc-950">
+  <div class="max-w-9xl mx-auto px-4 sm:px-6 text-center">
+    <span class="text-emerald-600 font-large uppercase tracking-wider text-sm">Online Store</span>
+    <h2 class="text-4xl md:text-5xl font-bold mt-3 mb-12 md:mb-16">Take with You</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
+      {% for product in products %}
+      <div
+        class="group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl hover:rotate-1 transition-all duration-300">
+        {% if product.on_sale %}
+        <span
+          class="absolute top-5 right-5 z-20 bg-red-500 text-white text-[10px] font-bold uppercase px-4 py-1 rounded-full shadow-md">
+          sale
+        </span>
+        {% endif %}
+        <div class="relative aspect-[4/5] bg-[#f8f1e9] overflow-hidden">
+          {% if product.image %}
+          <img src="{{ product.image.url }}" alt="{{ product.name }}"
+            class="w-full h-full object-contain transition-all duration-500 group-hover:scale-110">
+          {% else %}
+          <!-- Placeholder when no image is uploaded -->
+          <div class="w-full h-full flex items-center justify-center text-6xl text-emerald-300">
+            ☕
+          </div>
+          {% endif %}
+
+          <div
+            class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+          
+            <form method="post" action="{% url 'add_to_cart' product.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="slide-fill-btn text-white font-medium px-10 py-4 rounded-full text-sm tracking-wide">Add to cart</button>
+                </form>
+          </div>
+        </div>
+        <div class="p-6 text-center">
+          <h3 class="font-medium text-gray-900">{{ product.name }}</h3>
+          <div class="flex justify-center gap-2 text-sm mt-2">
+            {% if product.original_price %}
+            <span class="line-through text-gray-400">Ugx.{{ product.original_price }}</span>
+            {% endif %}
+            <span class="text-emerald-600 font-bold">Ugx.{{ product.price }}</span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+<!-- Recent Articles (Blog) -->
+<section class="py-16 md:py-24 bg-[#f8f4eb] bg-[radial-gradient(#e5d9c8_0.8px,transparent_1px)]
+                bg-[length:30px_30px]">
+  <div class="max-w-8xl mx-auto px-4 sm:px-6">
+
+    <!-- Header -->
+    <div class="text-center mb-10 md:mb-12">
+      <span class="text-emerald-600 font-medium tracking-wider text-sm">Our blog</span>
+      <h2 class="text-4xl md:text-5xl font-bold mt-3">Recent Articles</h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+
+      <!-- Article 1 -->
+      <div class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group">
+        <div class="relative">
+          <img src="{% static 'images/blog1.jpg' %}" class="w-full h-56 object-cover">
+          <div class="absolute top-4 left-4 bg-emerald-600 text-white text-xs font-medium px-5 py-1.5 rounded-full">
+            Focus</div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-4 text-xs text-gray-500 mb-4">
+            <span>🗓 May 12, 2025</span>
+            <span class="flex items-center gap-1"><i class="fas fa-comment-dots"></i> 0</span>
+            <span class="flex items-center gap-1"><i class="fas fa-eye"></i> 552</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">The Alchemy of Focus</h3>
+          <p class="text-gray-600 text-sm line-clamp-3 mb-6">
+            Coffee doesn't just wake you up—it sharpens the mind. Discover how to harness the transformative power of
+            focus and create a ritual that tells your brain it's time to create.
+          </p>
+          <a href="{% url 'blog' %}" class="text-emerald-600 font-medium text-sm hover:text-emerald-700">Read More →</a>
+        </div>
+      </div>
+      <!-- Article 2 -->
+      <div class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group">
+        <div class="relative">
+          <img src="{% static 'images/blog2.jpg' %}" class="w-full h-56 object-cover">
+          <div class="absolute top-4 left-4 bg-emerald-600 text-white text-xs font-medium px-5 py-1.5 rounded-full">
+            Connection</div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-4 text-xs text-gray-500 mb-4">
+            <span>🗓 May 22, 2025</span>
+            <span class="flex items-center gap-1"><i class="fas fa-comment-dots"></i> 0</span>
+            <span class="flex items-center gap-1"><i class="fas fa-eye"></i> 472</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">The Social Glue</h3>
+          <p class="text-gray-600 text-sm line-clamp-3 mb-6">
+            From coffeehouse meetings to kitchen-table talks, coffee is a connector. Learn how a simple cup becomes the
+            bridge between hearts, hands, and minds.
+          </p>
+          <a href="{% url 'blog' %}" class="text-emerald-600 font-medium text-sm hover:text-emerald-700">Read More →</a>
+        </div>
+      </div>
+      <!-- Article 3 -->
+      <div class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group">
+        <div class="relative">
+          <img src="{% static 'images/blog3.jpg' %}" class="w-full h-56 object-cover">
+          <div class="absolute top-4 left-4 bg-emerald-600 text-white text-xs font-medium px-5 py-1.5 rounded-full">
+            Mindfulness</div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-4 text-xs text-gray-500 mb-4">
+            <span>🗓 June 8, 2025</span>
+            <span class="flex items-center gap-1"><i class="fas fa-comment-dots"></i> 0</span>
+            <span class="flex items-center gap-1"><i class="fas fa-eye"></i> 462</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">The Mindfulness Pause</h3>
+          <p class="text-gray-600 text-sm line-clamp-3 mb-6">
+            That steamy cup forces a pause in a frantic day. Turn brewing into meditation, and experience the profound
+            power of presence in five mindful minutes.
+          </p>
+          <a href="{% url 'blog' %}" class="text-emerald-600 font-medium text-sm hover:text-emerald-700">Read More →</a>
+        </div>
+      </div>
+      <!-- Article 4 -->
+      <div class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group">
+        <div class="relative">
+          <img src="{% static 'images/blog4.jpg' %}" class="w-full h-56 object-cover">
+          <div class="absolute top-4 left-4 bg-emerald-600 text-white text-xs font-medium px-5 py-1.5 rounded-full">
+            Ritual</div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-4 text-xs text-gray-500 mb-4">
+            <span>🗓 June 10, 2025</span>
+            <span class="flex items-center gap-1"><i class="fas fa-comment-dots"></i> 0</span>
+            <span class="flex items-center gap-1"><i class="fas fa-eye"></i> 431</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">The Perpetual Brew</h3>
+          <p class="text-gray-600 text-sm line-clamp-3 mb-6">
+            A daily devotion for coffee lovers. Discover why that quiet moment with steam rising between your palms is a
+            sacred pact of self-respect and wonder.
+          </p>
+          <a href="{% url 'blog' %}" class="text-emerald-600 font-medium text-sm hover:text-emerald-700">Read More →</a>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-center mt-12">
+      <a href="{% url 'blog' %}"
+        class="special-read-more-btn px-10 sm:px-16 py-5 md:py-6 rounded-2xl font-semibold text-lg md:text-xl tracking-wide">
+        Read More
+      </a>
+    </div>
+</section>
+
+<!-- GALLERY SECTION - Image Accordion -->
+<section class="py-16 md:py-20 bg-zinc-950">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <h2 class="text-center text-emerald-700 text-3xl md:text-4xl font-bold mb-10 md:mb-12">Our Gallery</h2>
+
+    <!-- Image Accordion Component -->
+    <div class="group flex max-md:flex-col justify-center gap-3">
+
+      <!-- Gallery Item 1 -->
+      <article
+        class="group/article relative w-full rounded-2xl overflow-hidden md:group-hover:[&:not(:hover)]:w-[16.66%] md:group-focus-within:[&:not(:focus-within):not(:hover)]:w-[16.66%] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.15)] before:absolute before:inset-x-0 before:bottom-0 before:h-1/3 before:bg-gradient-to-t before:from-black/50 before:transition-opacity md:before:opacity-0 md:hover:before:opacity-100 focus-within:before:opacity-100 after:opacity-0 md:group-hover:[&:not(:hover)]:after:opacity-100 md:group-focus-within:[&:not(:focus-within):not(:hover)]:after:opacity-100 after:absolute after:inset-0 after:bg-white/20 after:backdrop-blur after:transition-all focus-within:ring focus-within:ring-emerald-400">
+        <a class="absolute inset-0 text-white z-10" href="#">
+          <span
+            class="absolute inset-x-0 bottom-0 text-base md:text-lg font-medium p-6 md:px-8 md:py-6 md:whitespace-nowrap md:truncate md:opacity-0 group-hover/article:opacity-100 group-focus-within/article:opacity-100 md:translate-y-2 group-hover/article:translate-y-0 group-focus-within/article:translate-y-0 transition duration-200 ease-[cubic-bezier(.5,.85,.25,1.8)] group-hover/article:delay-300 group-focus-within/article:delay-300">Espresso
+            Moments</span>
+        </a>
+        <img class="object-cover h-72 md:h-[480px] md:w-auto w-full" src="{% static 'images/gallery1.jpg' %}"
+          alt="Gallery 1">
+      </article>
+      <!-- Gallery Item 2 -->
+      <article
+        class="group/article relative w-full rounded-2xl overflow-hidden md:group-hover:[&:not(:hover)]:w-[16.66%] md:group-focus-within:[&:not(:focus-within):not(:hover)]:w-[16.66%] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.15)] before:absolute before:inset-x-0 before:bottom-0 before:h-1/3 before:bg-gradient-to-t before:from-black/50 before:transition-opacity md:before:opacity-0 md:hover:before:opacity-100 focus-within:before:opacity-100 after:opacity-0 md:group-hover:[&:not(:hover)]:after:opacity-100 md:group-focus-within:[&:not(:focus-within):not(:hover)]:after:opacity-100 after:absolute after:inset-0 after:bg-white/20 after:backdrop-blur after:transition-all focus-within:ring focus-within:ring-emerald-400">
+        <a class="absolute inset-0 text-white z-10" href="#">
+          <span
+            class="absolute inset-x-0 bottom-0 text-base md:text-lg font-medium p-6 md:px-8 md:py-6 md:whitespace-nowrap md:truncate md:opacity-0 group-hover/article:opacity-100 group-focus-within/article:opacity-100 md:translate-y-2 group-hover/article:translate-y-0 group-focus-within/article:translate-y-0 transition duration-200 ease-[cubic-bezier(.5,.85,.25,1.8)] group-hover/article:delay-300 group-focus-within/article:delay-300">Latte
+            Love</span>
+        </a>
+        <img class="object-cover h-72 md:h-[480px] md:w-auto w-full" src="{% static 'images/gallery2.jpg' %}"
+          alt="Gallery 2">
+      </article>
+      <!-- Gallery Item 3 -->
+      <article
+        class="group/article relative w-full rounded-2xl overflow-hidden md:group-hover:[&:not(:hover)]:w-[16.66%] md:group-focus-within:[&:not(:focus-within):not(:hover)]:w-[16.66%] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.15)] before:absolute before:inset-x-0 before:bottom-0 before:h-1/3 before:bg-gradient-to-t before:from-black/50 before:transition-opacity md:before:opacity-0 md:hover:before:opacity-100 focus-within:before:opacity-100 after:opacity-0 md:group-hover:[&:not(:hover)]:after:opacity-100 md:group-focus-within:[&:not(:focus-within):not(:hover)]:after:opacity-100 after:absolute after:inset-0 after:bg-white/20 after:backdrop-blur after:transition-all focus-within:ring focus-within:ring-emerald-400">
+        <a class="absolute inset-0 text-white z-10" href="#">
+          <span
+            class="absolute inset-x-0 bottom-0 text-base md:text-lg font-medium p-6 md:px-8 md:py-6 md:whitespace-nowrap md:truncate md:opacity-0 group-hover/article:opacity-100 group-focus-within/article:opacity-100 md:translate-y-2 group-hover/article:translate-y-0 group-focus-within/article:translate-y-0 transition duration-200 ease-[cubic-bezier(.5,.85,.25,1.8)] group-hover/article:delay-300 group-focus-within/article:delay-300">Barista
+            Craft</span>
+        </a>
+        <img class="object-cover h-72 md:h-[480px] md:w-auto w-full" src="{% static 'images/gallery3.jpg' %}"
+          alt="Gallery 3">
+      </article>
+      <!-- Gallery Item 4 -->
+      <article
+        class="group/article relative w-full rounded-2xl overflow-hidden md:group-hover:[&:not(:hover)]:w-[16.66%] md:group-focus-within:[&:not(:focus-within):not(:hover)]:w-[16.66%] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.15)] before:absolute before:inset-x-0 before:bottom-0 before:h-1/3 before:bg-gradient-to-t before:from-black/50 before:transition-opacity md:before:opacity-0 md:hover:before:opacity-100 focus-within:before:opacity-100 after:opacity-0 md:group-hover:[&:not(:hover)]:after:opacity-100 md:group-focus-within:[&:not(:focus-within):not(:hover)]:after:opacity-100 after:absolute after:inset-0 after:bg-white/20 after:backdrop-blur after:transition-all focus-within:ring focus-within:ring-emerald-400">
+        <a class="absolute inset-0 text-white z-10" href="#">
+          <span
+            class="absolute inset-x-0 bottom-0 text-base md:text-lg font-medium p-6 md:px-8 md:py-6 md:whitespace-nowrap md:truncate md:opacity-0 group-hover/article:opacity-100 group-focus-within/article:opacity-100 md:translate-y-2 group-hover/article:translate-y-0 group-focus-within/article:translate-y-0 transition duration-200 ease-[cubic-bezier(.5,.85,.25,1.8)] group-hover/article:delay-300 group-focus-within/article:delay-300">Cozy
+            Vibes</span>
+        </a>
+        <img class="object-cover h-72 md:h-[480px] md:w-auto w-full" src="{% static 'images/gallery4.jpg' %}"
+          alt="Gallery 4">
+      </article>
+      <!-- Gallery Item 5 -->
+      <article
+        class="group/article relative w-full rounded-2xl overflow-hidden md:group-hover:[&:not(:hover)]:w-[16.66%] md:group-focus-within:[&:not(:focus-within):not(:hover)]:w-[16.66%] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.15)] before:absolute before:inset-x-0 before:bottom-0 before:h-1/3 before:bg-gradient-to-t before:from-black/50 before:transition-opacity md:before:opacity-0 md:hover:before:opacity-100 focus-within:before:opacity-100 after:opacity-0 md:group-hover:[&:not(:hover)]:after:opacity-100 md:group-focus-within:[&:not(:focus-within):not(:hover)]:after:opacity-100 after:absolute after:inset-0 after:bg-white/20 after:backdrop-blur after:transition-all focus-within:ring focus-within:ring-emerald-400">
+        <a class="absolute inset-0 text-white z-10" href="#">
+          <span
+            class="absolute inset-x-0 bottom-0 text-base md:text-lg font-medium p-6 md:px-8 md:py-6 md:whitespace-nowrap md:truncate md:opacity-0 group-hover/article:opacity-100 group-focus-within/article:opacity-100 md:translate-y-2 group-hover/article:translate-y-0 group-focus-within/article:translate-y-0 transition duration-200 ease-[cubic-bezier(.5,.85,.25,1.8)] group-hover/article:delay-300 group-focus-within/article:delay-300">Bean
+            Selection</span>
+        </a>
+        <img class="object-cover h-72 md:h-[480px] md:w-auto w-full" src="{% static 'images/gallery5.jpg' %}"
+          alt="Gallery 5">
+      </article>
+      <!-- Gallery Item 6 -->
+      <article
+        class="group/article relative w-full rounded-2xl overflow-hidden md:group-hover:[&:not(:hover)]:w-[16.66%] md:group-focus-within:[&:not(:focus-within):not(:hover)]:w-[16.66%] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.15)] before:absolute before:inset-x-0 before:bottom-0 before:h-1/3 before:bg-gradient-to-t before:from-black/50 before:transition-opacity md:before:opacity-0 md:hover:before:opacity-100 focus-within:before:opacity-100 after:opacity-0 md:group-hover:[&:not(:hover)]:after:opacity-100 md:group-focus-within:[&:not(:focus-within):not(:hover)]:after:opacity-100 after:absolute after:inset-0 after:bg-white/20 after:backdrop-blur after:transition-all focus-within:ring focus-within:ring-emerald-400">
+        <a class="absolute inset-0 text-white z-10" href="#">
+          <span
+            class="absolute inset-x-0 bottom-0 text-base md:text-lg font-medium p-6 md:px-8 md:py-6 md:whitespace-nowrap md:truncate md:opacity-0 group-hover/article:opacity-100 group-focus-within/article:opacity-100 md:translate-y-2 group-hover/article:translate-y-0 group-focus-within/article:translate-y-0 transition duration-200 ease-[cubic-bezier(.5,.85,.25,1.8)] group-hover/article:delay-300 group-focus-within/article:delay-300">Social
+            Moments</span>
+        </a>
+        <img class="object-cover h-72 md:h-[480px] md:w-auto w-full" src="{% static 'images/gallery6.jpg' %}"
+          alt="Gallery 6">
+      </article>
+    </div>
+    <!-- End: Image Accordion Component -->
+
+  </div>
+</section>
+
+<!-- GO TOP BUTTON -->
+<button onclick="scrollToTop()" id="goTopBtn"
+  class="fixed bottom-8 right-8 bg-black hover:bg-zinc-900 w-16 h-16 rounded-full flex flex-col items-center justify-center shadow-2xl z-[9999] transition-all duration-300 border border-emerald-900/30 opacity-0">
+  <i class="fas fa-leaf text-emerald-500 text-[29px] mb-0.5"></i>
+  <span class="text-[10px] font-semibold tracking-widest text-white">GO TOP</span>
+</button>
+
+<script>
+  // Simple hero slider (3 slides)
+  let current = 1;
+  const total = 3;
+  function showSlide(n) {
+    document.querySelectorAll('.hero-slide').forEach(slide => {
+      slide.classList.add('opacity-0');
+      slide.classList.add('pointer-events-none');
+    });
+    const activeSlide = document.getElementById(`slide-${n}`);
+    activeSlide.classList.remove('opacity-0');
+    activeSlide.classList.remove('pointer-events-none');
+  }
+  function nextSlide() {
+    current = current === total ? 1 : current + 1;
+    showSlide(current);
+  }
+  function prevSlide() {
+    current = current === 1 ? total : current - 1;
+    showSlide(current);
+  }
+  // Auto slide
+  setInterval(nextSlide, 6000);
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+  // Show button only after scrolling down 300px
+  window.onscroll = function () {
+    const btn = document.getElementById("goTopBtn");
+    if (document.documentElement.scrollTop > 300 || document.body.scrollTop > 300) {
+      btn.style.opacity = "1";
+    } else {
+      btn.style.opacity = "0";
+    }
+  };
+</script>
+<style>
+  .special-read-more-btn {
+    position: relative;
+    background-color: #000;
+    /* Solid black by default */
+    color: white;
+    font-weight: bold;
+    padding: 1.25rem 4rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: all 300ms ease;
+    border: none;
+  }
+
+  .special-read-more-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #16a011;
+    /* Emerald green slides up */
+    z-index: -1;
+    transform: translateY(100%);
+    transition: transform 300ms ease;
+  }
+
+  .special-read-more-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  }
+
+  .special-read-more-btn:hover::before {
+    transform: translateY(0);
+  }
+</style>
+{% endblock %}
